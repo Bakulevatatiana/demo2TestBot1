@@ -40,8 +40,7 @@ public class TelegramBotUpdatesListenerTest {
 
 
         Update update = BotUtils.fromJson(json.replace("%text", "/start"), Update.class);
-        SendResponse sendResponse = BotUtils.fromJson("""{
-        "ok": true}""", SendResponse.class);
+        SendResponse sendResponse = BotUtils.fromJson("""{ "ok": true}""", SendResponse.class);
         when(telegramBot.execute((any()))).thenReturn(sendResponse);
         telegramBotUpdatesListener.process(Collections.singletonList(update));
         ArgumentCaptor<SendMessage> argumentCaptor = ArgumentCaptor.forClass(SendMessage.class);
